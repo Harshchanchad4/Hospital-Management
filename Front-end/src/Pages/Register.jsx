@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
+const BASE_URL = import.meta.env.VITE_BASE_URL
+
 
 const Register = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
@@ -31,7 +33,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/v1/user/patient/register",
+        BASE_URL +  "/user/patient/register",
         { ...formData, role: "Patient" },
         {
           withCredentials: true,

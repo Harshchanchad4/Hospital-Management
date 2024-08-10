@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+const BASE_URL = import.meta.env.VITE_BASE_URL
 
 const MessageForm = () => {
 
@@ -18,7 +19,7 @@ const MessageForm = () => {
     e.preventDefault();
     try {
       await axios.post(
-        "http://localhost:4000/api/v1/message/send",
+        BASE_URL + "/message/send",
         { firstName, lastName, email, phone, message },
         {
           withCredentials: true,

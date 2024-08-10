@@ -6,13 +6,18 @@ import { toast } from "react-toastify";
 import { Context } from "../main";
 import logo from "../assets/medicare.png"
 
+const BASE_URL = import.meta.env.VITE_BASE_URL
+
 const Navbar = () => {
   const [show, setShow] = useState(false);
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
+  
+  console.log("NAVBAR " , BASE_URL);
+
 
   const handleLogout = async () => {
     await axios
-      .get("http://localhost:4000/api/v1/user/patient/logout", {
+      .get(BASE_URL + "/user/patient/logout", {
         withCredentials: true,
       })
       .then((res) => {

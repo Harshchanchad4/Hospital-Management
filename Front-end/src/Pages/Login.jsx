@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { Context } from "../main";
 import { Link, useNavigate, Navigate } from "react-router-dom";
+const BASE_URL = import.meta.env.VITE_BASE_URL
 
 const Login = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
@@ -16,7 +17,7 @@ const Login = () => {
     e.preventDefault();
     try {
 
-      const response = await axios.post("http://localhost:4000/api/v1/user/login",
+      const response = await axios.post(BASE_URL + "/user/login",
         {email , password , role : "Patient"},
         {
           withCredentials: true,

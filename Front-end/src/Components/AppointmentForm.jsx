@@ -2,6 +2,9 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+
+const BASE_URL = import.meta.env.VITE_BASE_URL
+
 const AppointmentForm = () => {
 
     const navigate = useNavigate();
@@ -46,7 +49,7 @@ const AppointmentForm = () => {
 
         const fetchDoctors = async () => {
             try {
-                const { data } = await axios.get("http://localhost:4000/api/v1/user/doctors",
+                const { data } = await axios.get(BASE_URL + "/user/doctors",
                     { withCredentials: true }
                 );
 
