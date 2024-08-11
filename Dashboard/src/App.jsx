@@ -13,6 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { SiDebian } from 'react-icons/si';
 import axios from 'axios';
 import { Context } from './main';
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 function App() {
 
@@ -23,7 +24,7 @@ function App() {
         const fetchUser = async () => {
             try {
                 const response = await axios.get(
-                    "http://localhost:4000/api/v1/user/admin/me",
+                    BASE_URL + "/user/admin/me",
                     {
                         withCredentials: true,
                     }

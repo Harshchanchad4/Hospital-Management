@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Context } from '../main';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
 
 const Doctors = () => {
   const [doctors, setDoctors] = useState([]);
@@ -12,7 +14,7 @@ const Doctors = () => {
     const fetchDoctors = async () => {
       try {
 
-        const response = await axios.get("http://localhost:4000/api/v1/user/doctors",
+        const response = await axios.get(BASE_URL + "/user/doctors",
           { withCredentials: true }
         );
         setDoctors(response.data.doctors);

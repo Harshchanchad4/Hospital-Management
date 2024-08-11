@@ -12,6 +12,9 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import "../App.css"
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
+
 
 const Sidebar = () => {
 
@@ -47,7 +50,7 @@ const Sidebar = () => {
 
   const handleLogout = async () => {
     await axios
-      .get("http://localhost:4000/api/v1/user/admin/logout", {
+      .get(BASE_URL + "/user/admin/logout", {
         withCredentials: true,
       })
       .then((res) => {

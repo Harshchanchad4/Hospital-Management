@@ -3,6 +3,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Context } from "../main";
 import axios from "axios";
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const AddNewDoctor = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
@@ -58,7 +59,7 @@ const AddNewDoctor = () => {
       formData.append("doctorDepartment", doctorDepartment);
       formData.append("docAvatar", docAvatar);
       await axios
-        .post("http://localhost:4000/api/v1/user/doctor/addnew", formData, {
+        .post(BASE_URL + "/user/doctor/addnew", formData, {
           withCredentials: true,
           headers: { "Content-Type": "multipart/form-data" },
         })

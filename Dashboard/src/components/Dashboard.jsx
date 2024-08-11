@@ -5,6 +5,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { GoCheckCircleFill } from "react-icons/go";
 import { AiFillCloseCircle } from "react-icons/ai";
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const Dashboard = () => {
   const [appointments, setAppointments] = useState([]);
@@ -15,7 +16,7 @@ const Dashboard = () => {
     const fetchCountAppointmet = async () => {
 
       try {
-        const response = await axios.get("http://localhost:4000/api/v1/appointment/totalappointment",
+        const response = await axios.get(BASE_URL + "/appointment/totalappointment",
           { withCredentials: true },
         )
 
@@ -34,7 +35,7 @@ const Dashboard = () => {
     const fetchCountDoctors = async () => {
 
       try {
-        const response = await axios.get("http://localhost:4000/api/v1/user/doctor/totaldoctors",
+        const response = await axios.get(BASE_URL + "/user/doctor/totaldoctors",
           { withCredentials: true },
         )
 
@@ -53,7 +54,7 @@ const Dashboard = () => {
     const fetchAppointments = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:4000/api/v1/appointment/getall",
+          BASE_URL + "/appointment/getall",
           { withCredentials: true }
         );
         setAppointments(data.appointments);
@@ -67,7 +68,7 @@ const Dashboard = () => {
   const handleUpdateStatus = async (appointmentId, status) => {
     try {
       const { data } = await axios.put(
-        `http://localhost:4000/api/v1/appointment/update/${appointmentId}`,
+        BASE_URL + `/appointment/update/${appointmentId}`,
         { status },
         { withCredentials: true }
       );

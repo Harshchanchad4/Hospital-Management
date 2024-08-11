@@ -3,6 +3,7 @@ import { Context } from "../main"
 import { Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const Login = () => {
 
@@ -18,7 +19,7 @@ const Login = () => {
     e.preventDefault();
     try {
 
-      const response = await axios.post("http://localhost:4000/api/v1/user/login",
+      const response = await axios.post(BASE_URL + "/user/login",
         { email, password, role: "Admin" },
         {
           withCredentials: true,
