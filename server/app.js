@@ -16,13 +16,8 @@ const { errorMiddleware } = require("./middlewares/errorMiddleware");
 
 cloudinaryConnect();
 
-const corsOptions = {
-    origin: [process.env.FRONTEND_URL1 , process.env.FRONTEND_URL2], // Update this to your frontend's URL
-    credentials: true,
-    optionsSuccessStatus: 200,
-};
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(cookieParser());
 app.use(express.json());
